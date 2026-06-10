@@ -1,0 +1,28 @@
+requirement: physical_chemistry
+domain: physical chemistry
+description: >
+  Generate questions that test conceptual understanding in physical chemistry.
+  The questions should assess reasoning about thermodynamics, kinetics,
+  equilibrium, and molecular-level physical principles.  Emphasize qualitative
+  reasoning about trends and relationships rather than explicit numerical
+  calculation.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

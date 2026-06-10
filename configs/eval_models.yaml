@@ -1,0 +1,39 @@
+# Models evaluated on the SciCustom benchmark (Appendix C).
+# Each entry is passed to `scicustom.llm.get_chat_model`.
+
+models:
+  - provider: google
+    model: gemini-2.5-flash
+
+  - provider: openai
+    model: gpt-4o
+
+  - provider: openai
+    model: gpt-5-chat
+
+  - provider: anthropic
+    model: claude-opus-4-5
+
+  - provider: openai-compatible
+    model: qwen3-235b-a22b-instruct-2507
+    base_url: ${QWEN_BASE_URL}
+
+  - provider: openai-compatible
+    model: qwen3-max
+    base_url: ${QWEN_BASE_URL}
+
+  - provider: openai-compatible
+    model: grok-4-fast-non-reasoning
+    base_url: ${XAI_BASE_URL}
+
+  - provider: openai-compatible
+    model: kimi-k2-preview
+    base_url: ${MOONSHOT_BASE_URL}
+
+  - provider: openai-compatible
+    model: deepseek-v3.2
+    base_url: ${DEEPSEEK_BASE_URL}
+
+  - provider: openai-compatible
+    model: mistral-large
+    base_url: ${MISTRAL_BASE_URL}

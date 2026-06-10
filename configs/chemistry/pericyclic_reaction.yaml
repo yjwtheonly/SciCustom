@@ -1,0 +1,31 @@
+# Case-study config from Section 3.4 - novel scientific requirement without
+# pre-existing benchmark coverage.
+requirement: pericyclic_reaction
+domain: pericyclic reaction
+description: >
+  Construct a benchmark targeting pericyclic reactions in organic chemistry.
+  Pericyclic reactions require a nuanced understanding of orbital symmetry,
+  stereochemistry, and specific reaction conditions (e.g., thermal vs.
+  photochemical).  Coverage should include cycloadditions, electrocyclic
+  reactions, and sigmatropic rearrangements.  Questions should isolate
+  knowledge of this class of reactions from general organic chemistry.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

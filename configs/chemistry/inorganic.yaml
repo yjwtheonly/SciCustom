@@ -1,0 +1,28 @@
+requirement: inorganic_chemistry
+domain: inorganic chemistry
+description: >
+  Generate questions that test core knowledge and reasoning in inorganic
+  chemistry.  The questions should focus on electronic structure, oxidation
+  states, coordination geometry, ligand field effects, symmetry, and periodic
+  trends in inorganic systems.  Emphasize conceptual understanding of
+  structure-property relationships rather than memorization of isolated facts.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

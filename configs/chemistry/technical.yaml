@@ -1,0 +1,28 @@
+requirement: technical_chemistry
+domain: technical chemistry
+description: >
+  Generate questions that assess reasoning in technical and industrial
+  chemistry.  The questions should focus on chemical processes at scale, such
+  as reactor behavior, process optimization, safety considerations, and
+  material or energy conversion.  Emphasize reasoning about system-level
+  behavior rather than detailed engineering design.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

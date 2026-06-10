@@ -1,0 +1,29 @@
+requirement: analytical_chemistry
+domain: analytical chemistry
+description: >
+  Generate questions that test knowledge and reasoning in analytical chemistry.
+  The questions should assess understanding of how experimental analytical
+  signals (e.g., NMR, IR, UV-Vis, mass spectra, chromatographic behavior,
+  titration curves) relate to molecular structure, composition, concentration,
+  or purity.  Focus on conceptual interpretation and chemical reasoning rather
+  than numerical data processing or instrument-specific operating procedures.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

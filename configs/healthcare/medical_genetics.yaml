@@ -1,0 +1,27 @@
+requirement: medical_genetics
+domain: medical genetics
+description: >
+  Generate questions that test reasoning in medical genetics.  The questions
+  should assess understanding of inheritance patterns, penetrance, and
+  genotype-phenotype relationships, and genetic variation.  Focus on
+  conceptual genetic reasoning rather than clinical decision-making.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

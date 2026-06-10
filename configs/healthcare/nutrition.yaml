@@ -1,0 +1,28 @@
+requirement: nutrition
+domain: nutrition
+description: >
+  Generate questions that assess understanding of nutritional science.  The
+  questions should focus on the biological roles of macro- and micronutrients,
+  their involvement in metabolism, and the physiological consequences of
+  deficiency or imbalance.  Emphasize mechanistic understanding over dietary
+  recommendations.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

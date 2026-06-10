@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scicustom"
+version = "0.1.0"
+description = "Ontology-driven custom evaluation of scientific capabilities in LLMs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Yiyang Gu"},
+    {name = "Junwei Yang"},
+]
+keywords = ["llm", "benchmark", "scientific evaluation", "ontology"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+    "tqdm>=4.65",
+    "rapidfuzz>=3.6",
+    "scikit-learn>=1.3",
+    "transformers>=4.44",
+    "sentencepiece>=0.1.99",
+    "accelerate>=0.30",
+    "openai>=1.30",
+    "anthropic>=0.34",
+    "google-genai>=0.3",
+]
+
+[project.optional-dependencies]
+vllm = ["vllm>=0.6.0"]
+dev = [
+    "pytest>=7.4",
+    "pytest-xdist>=3.5",
+    "ruff>=0.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/yjwtheonly/SciCustom"
+Repository = "https://github.com/yjwtheonly/SciCustom"
+Issues = "https://github.com/yjwtheonly/SciCustom/issues"
+
+[project.scripts]
+scicustom-tag = "scripts.tag_queries:main"
+scicustom-build = "scripts.build_benchmark:main"
+scicustom-eval = "scripts.evaluate_models:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["scicustom*"]
+exclude = ["tests*", "scripts*", "configs*"]
+
+[tool.setuptools.package-data]
+scicustom = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]

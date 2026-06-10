@@ -1,0 +1,28 @@
+requirement: organic_chemistry
+domain: organic chemistry
+description: >
+  The organic chemistry benchmark assesses a wide range of skills on reasoning
+  about chemical structures and reaction pathways, such as Reaction Mechanism
+  Identification, Product Prediction, NMR Signal Prediction, Number of Isomers,
+  Polymer Chemistry, Nomenclature Conversion and Organic Reactivity.
+
+k1: 10           # voting top-K  (Section 2.4)
+k2: 100          # proxy subset size (Section 2.5)
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+# We reuse the voting judges for the binary-search relevance vote.
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

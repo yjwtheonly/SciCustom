@@ -1,0 +1,27 @@
+requirement: virology
+domain: virology
+description: >
+  Generate questions that test conceptual understanding in virology.  The
+  questions should assess knowledge of viral structure, replication cycles,
+  genome organization, and interactions with host cells and immune systems.
+  Avoid clinical treatment guidelines or laboratory diagnostic protocols.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5

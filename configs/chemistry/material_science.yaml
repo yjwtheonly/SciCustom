@@ -1,0 +1,29 @@
+requirement: material_science
+domain: material science
+description: >
+  Generate questions that evaluate understanding in materials science.  The
+  questions should assess how atomic or microstructural features (e.g., crystal
+  structure, defects, phases, interfaces) determine macroscopic properties
+  such as mechanical strength, electrical conductivity, or thermal behavior.
+  Focus on structure-property reasoning rather than detailed synthesis
+  protocols.
+
+k1: 10
+k2: 100
+fuzzy_threshold: 85.0
+proxy_samples: 100
+encoder_name: roberta-base
+
+voting_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+relevance_judges:
+  - {provider: openai, model: gpt-5}
+  - {provider: anthropic, model: claude-opus-4-5}
+  - {provider: google, model: gemini-3-pro-preview}
+
+mcq_writer:
+  provider: openai
+  model: gpt-5
